@@ -1,0 +1,2 @@
+#!/usr/bin/env node
+"use strict";exports.__esModule=!0;var inquirer=require("inquirer"),fs=require("fs"),prettier=require("prettier"),interface_create_1=require("./interface-create"),prompt=inquirer.createPromptModule();fs.access("interface",fs.constants.W_OK,function(e){e&&fs.mkdir("interface",function(){}),prompt([{type:"input",name:"swaggerUrl",message:"输入你的swagger路径"}]).then(function(e){e=e.swaggerUrl;(0,interface_create_1.getInterfaceDocs)(e.trim())}).catch(function(e){console.log(e)}).finally(function(){prettier.resolveConfigFile("../interface/api.d.ts")})});
